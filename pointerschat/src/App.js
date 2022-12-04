@@ -7,6 +7,7 @@ import 'firebase/compat/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { signInWithRedirect } from 'firebase/auth';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCrdMPj6Lxh0ce0wD_CjnQAWW7wWo6Jv0Q",
@@ -42,15 +43,25 @@ function App() {
 
 function SignIn() {
 
+  const signInAnonymously = () => {
+    auth.signInAnonymously();
+  }
+
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
   }
 
+  /*
+  const signInWithEmailPassword = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithEmailAndPassword();
+  }
+  */
+
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p>Do not violate the community guidelines or you will be banned for life!</p>
+      <button className="sign-in" onClick={signInAnonymously}>Sign in Anonymously</button>
     </>
   )
 
@@ -66,7 +77,7 @@ function SignOut() {
 function ChatRoom() {
   const dummy = useRef();
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(25);
+  const query = messagesRef.orderBy('createdAt').limit(200);
 
   const [messages] = useCollectionData(query, { idField: 'id' });
 
@@ -116,7 +127,7 @@ function ChatMessage(props) {
 
   return (<>
     <div className={`message ${messageClass}`}>
-      <img src={photoURL} />
+      <img src={photoURL || "https://cdn-icons-png.flaticon.com/512/188/188987.png"} />
       <p>{text}</p>
     </div>
   </>)
