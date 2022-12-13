@@ -52,7 +52,9 @@ function SignIn() {
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
+    auth.catch((error) => alert(error.message));
   }
+
 
   /*
   const signInWithEmailPassword = () => {
