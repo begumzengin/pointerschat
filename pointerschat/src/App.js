@@ -7,7 +7,7 @@ import 'firebase/compat/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { signInWithRedirect } from 'firebase/auth';
+//import { signInWithRedirect } from 'firebase/auth';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCrdMPj6Lxh0ce0wD_CjnQAWW7wWo6Jv0Q",
@@ -21,15 +21,40 @@ firebase.initializeApp({
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
+function getRandomIcons(){
+  const IconUrls = [
+    "https://cdn-icons-png.flaticon.com/512/188/188987.png",
+    "https://cdn-icons-png.flaticon.com/512/188/188995.png",
+    "https://cdn-icons-png.flaticon.com/512/188/188989.png",
+    "https://cdn-icons-png.flaticon.com/512/189/189001.png",
+    "https://cdn-icons-png.flaticon.com/512/188/188990.png",
+    "https://cdn-icons-png.flaticon.com/512/188/188997.png",
+    "https://cdn-icons-png.flaticon.com/512/1752/1752681.png",
+    "https://cdn-icons-png.flaticon.com/512/189/189000.png",
+    "https://cdn-icons-png.flaticon.com/512/188/188993.png",
+    "https://cdn-icons-png.flaticon.com/512/188/188988.png",
+    "https://cdn-icons-png.flaticon.com/512/188/188991.png",
+    "https://cdn-icons-png.flaticon.com/512/188/188994.png",
+    "https://cdn-icons-png.flaticon.com/512/188/188924.png",
+    "https://cdn-icons-png.flaticon.com/512/189/189004.png",
+    "https://cdn-icons-png.flaticon.com/512/528/528101.png"
+  ];
+
+  const randomIndex = Math.floor(Math.random() * IconUrls.length);
+  return IconUrls[randomIndex];
+}
+
+const randomIcon = getRandomIcons();
 
 function App() {
 
   const [user] = useAuthState(auth);
 
+
   return (
     <div className="App">
       <header>
-        <h1>network chat 💻👩🏻‍💻🧑🏻‍💻</h1>
+        <h1>pointers chat 💻👩🏻‍💻🧑🏻‍💻</h1>
         <SignOut />
       </header>
 
@@ -91,6 +116,7 @@ function ChatRoom() {
 
   const sendMessage = async (e) => {
     e.preventDefault();
+    
 
     const { uid, photoURL } = auth.currentUser;
 
@@ -98,7 +124,7 @@ function ChatRoom() {
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
-      photoURL
+      photoURL: randomIcon,
     })
 
     setFormValue('');
@@ -132,7 +158,7 @@ function ChatMessage(props) {
 
   return (<>
     <div className={`message ${messageClass}`}>
-      <img src={photoURL || "https://cdn-icons-png.flaticon.com/512/188/188987.png"} />
+      <img src={photoURL} />
       <p>{text}</p>
     </div>
   </>)
