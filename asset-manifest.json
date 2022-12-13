@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/pointerschat/static/css/main.f3486c23.css",
-    "main.js": "/pointerschat/static/js/main.787f9e64.js",
+    "main.js": "/pointerschat/static/js/main.65e361e7.js",
     "static/js/787.ff1f3eb6.chunk.js": "/pointerschat/static/js/787.ff1f3eb6.chunk.js",
     "index.html": "/pointerschat/index.html",
     "main.f3486c23.css.map": "/pointerschat/static/css/main.f3486c23.css.map",
-    "main.787f9e64.js.map": "/pointerschat/static/js/main.787f9e64.js.map",
+    "main.65e361e7.js.map": "/pointerschat/static/js/main.65e361e7.js.map",
     "787.ff1f3eb6.chunk.js.map": "/pointerschat/static/js/787.ff1f3eb6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f3486c23.css",
-    "static/js/main.787f9e64.js"
+    "static/js/main.65e361e7.js"
   ]
 }
