@@ -37,7 +37,12 @@ function getRandomIcons(){
     "https://cdn-icons-png.flaticon.com/512/188/188994.png",
     "https://cdn-icons-png.flaticon.com/512/188/188924.png",
     "https://cdn-icons-png.flaticon.com/512/189/189004.png",
-    "https://cdn-icons-png.flaticon.com/512/528/528101.png"
+    "https://cdn-icons-png.flaticon.com/512/528/528101.png",
+    "https://cdn-icons-png.flaticon.com/512/189/189003.png",
+    "https://cdn-icons-png.flaticon.com/512/188/188998.png",
+    "https://cdn-icons-png.flaticon.com/512/1752/1752867.png",
+    "https://cdn-icons-png.flaticon.com/512/189/189006.png",
+    "https://cdn-icons-png.flaticon.com/512/1752/1752816.png"
   ];
 
   const randomIndex = Math.floor(Math.random() * IconUrls.length);
@@ -107,7 +112,7 @@ function SignOut() {
 function ChatRoom() {
   const dummy = useRef();
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(200);
+  const query = messagesRef.orderBy('createdAt').limit(1000);
 
   const [messages] = useCollectionData(query, { idField: 'id' });
 
