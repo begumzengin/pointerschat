@@ -43,17 +43,18 @@ function App() {
 
 function SignIn() {
 
-  /*
+  
   const signInAnonymously = () => {
     auth.signInAnonymously();
   }
-  */
-
+  
+  /*
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithRedirect(provider);
     auth.catch((error) => alert(error.message));
   }
+  */
 
 
   /*
@@ -65,7 +66,7 @@ function SignIn() {
 
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>sign in with google</button>
+      <button className="sign-in" onClick={signInAnonymously}>sign in anonymously</button>
     </>
   )
 
