@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Pointers Chat 🤙🏻🔥</h1>
+        <h1>network chat 💻👩🏻‍💻🧑🏻‍💻</h1>
         <SignOut />
       </header>
 
@@ -43,9 +43,11 @@ function App() {
 
 function SignIn() {
 
+  /*
   const signInAnonymously = () => {
     auth.signInAnonymously();
   }
+  */
 
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -61,7 +63,7 @@ function SignIn() {
 
   return (
     <>
-      <button className="sign-in" onClick={signInAnonymously}>Sign in Anonymously</button>
+      <button className="sign-in" onClick={signInWithGoogle}>sign in with google</button>
     </>
   )
 
@@ -69,7 +71,7 @@ function SignIn() {
 
 function SignOut() {
   return auth.currentUser && (
-    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+    <button className="sign-out" onClick={() => auth.signOut()}>sign out</button>
   )
 }
 
@@ -113,7 +115,7 @@ function ChatRoom() {
 
       <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
 
-      <button type="submit" disabled={!formValue}>Send 🕊️</button>
+      <button type="submit" disabled={!formValue}>send</button>
 
     </form>
   </>)
